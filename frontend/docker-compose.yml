@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: .
+    container_name: tienda-perritos-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    environment:
+      # Si necesitas apuntar el frontend a un backend distinto, usa aquí una variable.
+      # El proxy interno en nginx ya apunta a backend:3001.
+      NODE_ENV: production
